@@ -1,0 +1,76 @@
+✅ 1. Stage all changes and commit them with a meaningful message
+
+git add .                          # Stage all changes (modified, added, deleted files)
+git commit -m "Add detailed commit message here"  # Commit with a message
+
+
+✅ 2. Move commits from the wrong branch to the correct branch
+If you made commits on the wrong branch (wrong-branch) and want to move them to correct-branch:
+
+# Switch to the correct branch
+git checkout correct-branch
+
+# Cherry-pick the last n commits from wrong-branch (replace n with actual number or use commit hashes)
+git cherry-pick <commit_hash1> <commit_hash2> ...
+
+# Optionally, delete commits from wrong-branch
+git checkout wrong-branch
+git reset --hard HEAD~n  # Replace n with number of commits to undo
+
+
+✅ 3. Create a new branch, make changes, and push to GitHub
+
+git checkout -b feature-branch       # Create and switch to new branch
+# Make your changes
+git add .                            # Stage changes
+git commit -m "Describe your changes"  # Commit
+git push origin feature-branch       # Push branch to GitHub
+
+
+✅ 4. Contribute to an open-source GitHub project (Fork, Change, PR)
+1. Fork the repository on GitHub.
+2. Clone your fork:
+  git clone https://github.com/your-username/project-name.git
+  cd project-name
+3. Create a new branch:
+  git checkout -b your-feature-branch
+4. Make changes, then:
+  git add .
+  git commit -m "Explain what you changed"
+  git push origin your-feature-branch
+5. Create a Pull Request (PR) on GitHub from your branch to the original repo's main or         appropriate branch.
+
+✅ 5. Resolve merge conflicts
+
+ 1. Merge the main branch into your feature branch:
+git checkout your-branch
+git fetch origin
+git merge origin/main
+2. Resolve conflicts manually in files marked with <<<<<<<, =======, and >>>>>>>
+3. After resolving:
+  git add conflicted-files
+  git commit  # Complete the merge
+
+
+✅ 6. Create a feature branch based on the latest main branch
+
+git checkout main
+git pull origin main             # Ensure local main is up to date
+git checkout -b new-feature      # Create and switch to new branch from updated main
+
+✅ 7. Revert to a specific commit and discard later commits
+Use reset (destructive, modifies history):
+  git reset --hard <commit_hash>
+
+
+✅ 8. Restore a deleted file from a previous commit
+If the file was deleted and committed:
+  
+git checkout HEAD^ -- path/to/deleted-file
+git add path/to/deleted-file
+git commit -m "Restore accidentally deleted file"
+
+If you know the commit where it last existed:
+
+  git checkout <commit_hash> -- path/to/deleted-file
+
